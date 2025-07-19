@@ -1,56 +1,62 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Heart, MessageCircle, Share, Mail, MoreHorizontal } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
+import { useState } from 'react';
+import {
+  Heart,
+  MessageCircle,
+  Share,
+  Mail,
+  MoreHorizontal,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import Image from 'next/image';
 
 interface FeedPostProps {
   post: {
-    id: number
+    id: number;
     user: {
-      name: string
-      avatar: string
-      year: string
-      course: string
-      verified: boolean
-    }
-    type: string
-    title: string
-    description: string
-    price?: number
-    priceUnit?: string
-    images?: string[]
-    likes: number
-    comments: number
-    timeAgo: string
-  }
+      name: string;
+      avatar: string;
+      year: string;
+      course: string;
+      verified: boolean;
+    };
+    type: string;
+    title: string;
+    description: string;
+    price?: number;
+    priceUnit?: string;
+    images?: string[];
+    likes: number;
+    comments: number;
+    timeAgo: string;
+  };
 }
 
 export function FeedPost({ post }: FeedPostProps) {
-  const [liked, setLiked] = useState(false)
-  const [likesCount, setLikesCount] = useState(post.likes)
+  const [liked, setLiked] = useState(false);
+  const [likesCount, setLikesCount] = useState(post.likes);
 
   const handleLike = () => {
-    setLiked(!liked)
-    setLikesCount(liked ? likesCount - 1 : likesCount + 1)
-  }
+    setLiked(!liked);
+    setLikesCount(liked ? likesCount - 1 : likesCount + 1);
+  };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case "FOR SALE":
-        return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
-      case "SKILL OFFERED":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
-      case "FREE":
-        return "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400"
+      case 'FOR SALE':
+        return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400';
+      case 'SKILL OFFERED':
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400';
+      case 'FREE':
+        return 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400';
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400"
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400';
     }
-  }
+  };
 
   return (
     <Card className="w-full">
@@ -58,12 +64,15 @@ export function FeedPost({ post }: FeedPostProps) {
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
             <Avatar className="h-12 w-12">
-              <AvatarImage src={post.user.avatar || "/placeholder.svg"} alt={post.user.name} />
+              <AvatarImage
+                src={post.user.avatar || '/placeholder.svg'}
+                alt={post.user.name}
+              />
               <AvatarFallback>
                 {post.user.name
-                  .split(" ")
+                  .split(' ')
                   .map((n) => n[0])
-                  .join("")}
+                  .join('')}
               </AvatarFallback>
             </Avatar>
             <div>
@@ -97,8 +106,10 @@ export function FeedPost({ post }: FeedPostProps) {
           {post.price && (
             <div className="mt-2">
               <span className="text-2xl font-bold text-primary">
-                ${post.price}
-                {post.priceUnit && <span className="text-sm font-normal"> {post.priceUnit}</span>}
+                £{post.price}
+                {post.priceUnit && (
+                  <span className="text-sm font-normal"> {post.priceUnit}</span>
+                )}
               </span>
             </div>
           )}
@@ -107,7 +118,7 @@ export function FeedPost({ post }: FeedPostProps) {
         {post.images && post.images.length > 0 && (
           <div className="rounded-lg overflow-hidden">
             <Image
-              src={post.images[0] || "/placeholder.svg"}
+              src={post.images[0] || '/placeholder.svg'}
               alt="Post image"
               width={600}
               height={300}
@@ -122,9 +133,9 @@ export function FeedPost({ post }: FeedPostProps) {
               variant="ghost"
               size="sm"
               onClick={handleLike}
-              className={`space-x-2 ${liked ? "text-red-500" : ""}`}
+              className={`space-x-2 ${liked ? 'text-red-500' : ''}`}
             >
-              <Heart className={`h-4 w-4 ${liked ? "fill-current" : ""}`} />
+              <Heart className={`h-4 w-4 ${liked ? 'fill-current' : ''}`} />
               <span>{likesCount}</span>
             </Button>
             <Button variant="ghost" size="sm" className="space-x-2">
@@ -142,5 +153,5 @@ export function FeedPost({ post }: FeedPostProps) {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

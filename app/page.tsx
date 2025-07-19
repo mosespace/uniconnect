@@ -64,11 +64,11 @@ const feedPosts = [
 export default function Home() {
   return (
     <MainLayout>
-      <div className="max-w-2xl mx-auto space-y-6">
+      {/* <div className="max-w-2xl mx-auto space-y-6">
         {feedPosts.map((post) => (
           <FeedPost key={post.id} post={post} />
         ))}
-      </div>
+      </div> */}
       <PostCreationModal />
     </MainLayout>
   );
