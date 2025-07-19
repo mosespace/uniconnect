@@ -72,8 +72,8 @@ export function PostCreationModal() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-primary hover:bg-primary/80 z-50">
-          <Plus className="h-6 w-6" />
+        <Button className="fixed bottom-6 right-6 h-14 w-14 rounded-full dark:shadow-lg bg-primary hover:bg-primary/80 z-50">
+          <Plus className="h-6 w-6 text-white dark:text-black" />
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
