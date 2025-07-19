@@ -1,9 +1,9 @@
-import type React from 'react';
+import { ThemeProvider } from '@/components/theme-provider';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import type React from 'react';
 import './globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
-import Head from 'next/head';
+import type { Viewport } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     'Connect, trade, and discover skills with fellow university students',
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -20,13 +27,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
