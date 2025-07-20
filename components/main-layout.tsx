@@ -15,7 +15,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen ">
       <TopNavigation onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="flex pt-16">
