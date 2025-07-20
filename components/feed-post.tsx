@@ -94,7 +94,7 @@ export function FeedPost({ post }: FeedPostProps) {
             alt="Post image"
             width={600}
             height={300}
-            className="w-full h-[50%] object-cover"
+            className="w-full h-auto object-cover"
           />
         </div>
       );
@@ -116,7 +116,7 @@ export function FeedPost({ post }: FeedPostProps) {
                     alt={`Post image ${index + 1}`}
                     width={600}
                     height={300}
-                    className="w-full h-[50%] object-cover"
+                    className="w-full h-auto object-cover"
                   />
                 </div>
               </CarouselItem>
